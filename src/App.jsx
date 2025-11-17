@@ -21,7 +21,7 @@ import Products from "./components/Products";
 import Services from "./components/Services";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
-import Categories from "./components/categories";
+import Categories from "./components/Categories";
 
 export default function App() {
   const [dark, setDark] = useState(false);
