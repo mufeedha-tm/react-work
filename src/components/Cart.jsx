@@ -49,3 +49,5 @@ export default function Cart({ cart, remove, updateQty }) {
     </>
   );
 }
+
+

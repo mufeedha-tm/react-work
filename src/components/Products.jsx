@@ -1,9 +1,8 @@
 import React from "react";
-
-import toner from "../assets/toner.webp"; // reuse serum as toner placeholder
-import blush from "../assets/blush.webp"; // reuse lipstick as blush placeholder
-import primer from "../assets/primer.jpg"; // reuse cream as primer placeholder
-import compact from "../assets/compact.jpeg"; // reuse mask as compact placeholder
+import toner from "../assets/toner.webp";
+import blush from "../assets/blush.webp";
+import primer from "../assets/primer.jpg";
+import compact from "../assets/compact.jpeg";
 
 const products = [
   { id: "p1", name: "Radiance Toner", price: "599", img: toner, tag: "Top rated" },
@@ -17,8 +16,12 @@ export default function Products({ addToCart }) {
     <section id="products" className="products">
       <h2>Trending Products For You</h2>
       <div className="product-grid">
-        {products.map(p => (
-          <div className="product-card" key={p.id}>
+        {products.map((p, index) => (
+          <div
+            className="product-card floating"
+            key={p.id}
+            style={{ animationDelay: `${index * 0.15}s` }}
+          >
             <div className="p-image">
               <img src={p.img} alt={p.name} />
               <div className="p-tag">{p.tag}</div>
@@ -28,7 +31,12 @@ export default function Products({ addToCart }) {
               <div className="p-price">₹{p.price}</div>
               <div className="p-cta">
                 <button className="ghost-btn small">Details</button>
-                <button className="primary-btn small" onClick={() => addToCart({ ...p, price_raw: p.price })}>Add to Cart</button>
+                <button
+                  className="primary-btn small"
+                  onClick={() => addToCart({ ...p, price_raw: p.price })}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>

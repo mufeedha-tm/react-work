@@ -1,5 +1,4 @@
 import React from "react";
-
 import catSkincare from "../assets/cat-skincare.webp";
 import catMakeup from "../assets/cat-makeup.jpg";
 import catFragrance from "../assets/cat-fragrance.webp";

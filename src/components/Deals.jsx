@@ -16,8 +16,12 @@ export default function Deals({ addToCart }) {
     <section id="deals" className="deals">
       <h2>Today's Best Deals</h2>
       <div className="deals-grid">
-        {deals.map((d) => (
-          <article className="deal-card" key={d.id}>
+        {deals.map((d, index) => (
+          <article
+            className="deal-card floating"
+            key={d.id}
+            style={{ animationDelay: `${index * 0.15}s` }}
+          >
             <div className="deal-thumb">
               <img src={d.img} alt={d.name} />
             </div>

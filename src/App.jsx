@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-// -------Nested routing -----
+
+//--------NESTED ROUTING IMPORTS ---------
 // import { Routes, Route, Navigate } from "react-router-dom";
 // import "./App.css";
 // import Navbar from "./Nestedrouting/Navbar";
@@ -13,7 +14,7 @@ import React, { useState, useEffect } from "react";
 // import Contact from "./Nestedrouting/pages/Contact";
 // import Footer from "./Nestedrouting/Footer";
 
-// ------React Components -----
+// ----------REACT COMPONENTS IMPORTS------------ 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Deals from "./components/Deals";
@@ -21,13 +22,15 @@ import Products from "./components/Products";
 import Services from "./components/Services";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
-import Categories from "./components/Categories";
+import Categories from "./components/categories";
+
 
 export default function App() {
   const [dark, setDark] = useState(false);
   const [cart, setCart] = useState([]);
 
-  // Load theme + cart from localStorage
+  //------ THEME + CART LOCAL STORAGE ---------
+
   useEffect(() => {
     const savedTheme = localStorage.getItem("beauty-theme");
     if (savedTheme) setDark(savedTheme === "dark");
@@ -36,21 +39,18 @@ export default function App() {
     if (savedCart) setCart(JSON.parse(savedCart));
   }, []);
 
-  // Store theme
   useEffect(() => {
-    document.documentElement.setAttribute(
-      "data-theme",
-      dark ? "dark" : "light"
-    );
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
     localStorage.setItem("beauty-theme", dark ? "dark" : "light");
   }, [dark]);
 
-  // Store cart
   useEffect(() => {
     localStorage.setItem("beauty-cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Add to cart
+
+  //----------- ADD / REMOVE / UPDATE CART ---------
+
   function addToCart(product) {
     setCart((prev) => {
       const found = prev.find((p) => p.id === product.id);
@@ -63,12 +63,10 @@ export default function App() {
     });
   }
 
-  // Remove item
   function removeFromCart(id) {
     setCart((prev) => prev.filter((p) => p.id !== id));
   }
 
-  // Update quantity
   function updateQty(id, qty) {
     if (qty < 1) return;
     setCart((prev) =>
@@ -76,11 +74,12 @@ export default function App() {
     );
   }
 
+  
   return (
     <>
-      {/* ---nested routing---
+          {/* ---------NESTED ROUTING SECTION ----------*/}
       
-      <Navbar />
+      {/* <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -93,11 +92,11 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer /> 
-      
-      ------------------------------------------------------------ */}
+      <Footer />  */}
 
-      {/* ------react keys------ */}
+          {/* --------REACT COMPONENTS------------  */}
+
+      
       <div className="app">
         <Navbar
           dark={dark}
@@ -114,9 +113,9 @@ export default function App() {
           <Products addToCart={addToCart} />
           <Services />
         </main>
-
         <Footer />
       </div>
+
     </>
   );
 }

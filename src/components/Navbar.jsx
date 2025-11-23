@@ -22,19 +22,18 @@ export default function Navbar({ dark, setDark, cartCount }) {
       </div>
 
       <div className="nav-right">
-        <button className="icon-btn" title="Search" aria-label="Search">🔍</button>
+        <button className="icon-btn" title="Search">🔍</button>
 
         <label className="toggle" title="Toggle dark mode">
           <input
             type="checkbox"
             onChange={() => setDark(prev => !prev)}
             checked={dark}
-            aria-label="Toggle dark mode"
           />
           <span className="slider" />
         </label>
 
-        <div className="cart-pill" title="Cart">
+        <div className="cart-pill">
           🛒 <span className="cart-count">{cartCount}</span>
         </div>
 
@@ -42,8 +41,7 @@ export default function Navbar({ dark, setDark, cartCount }) {
 
         <button
           className="hamburger"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => setOpen(v => !v)}
         >
           <span className="hamburger-bar" />
           <span className="hamburger-bar" />
